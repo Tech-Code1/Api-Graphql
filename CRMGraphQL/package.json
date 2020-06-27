@@ -2,14 +2,14 @@
   "name": "crmgraphqleslaby",
   "version": "1.0.0",
   "description": "Project Eslaby",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node .",
+    "start": "nodemon .",
     "dev": "nodemon ."
   },
   "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/eslaby/eslaby.git"
+    "dev": "tsc -w index.ts",
+    "dev:start": "nodemon index.ts"
   },
   "author": "David Montoya Ramírez",
   "license": "ISC",
@@ -18,7 +18,13 @@
   },
   "homepage": "https://gitlab.com/eslaby/eslaby#readme",
   "dependencies": {
-    "apollo-server": "^2.15.0"
+    "apollo-server": "^2.15.0",
+    "eslint": "^7.3.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.21.2",
+    "node": "^14.4.0",
+    "ts-node": "^8.10.2",
+    "tslint-config-airbnb": "^5.11.2"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
