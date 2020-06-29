@@ -7,6 +7,9 @@
     "apollo-server": "^2.15.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "graphql": "^15.2.0",
+    "graphql-import-node": "0.0.4",
+    "graphql-tools": "^6.0.11",
     "grapht": "^1.0.4",
     "mongoose": "^5.9.20",
     "type": "^2.0.0"

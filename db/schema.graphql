@@ -1,0 +1,24 @@
+const { gql } = require("apollo-server");
+
+//schema
+const typeDefs = gql`
+  type User {
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    dateOfBirth: Date
+    genre: String
+    chooseYourRole: String
+  }
+
+  type Query {
+    obtenerCurso: String
+  }
+
+  type Mutation {
+    newUser: User
+  }
+`;
+
+module.exports = typeDefs;
