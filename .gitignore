@@ -1,3 +1,5 @@
 #Archivos Ignorados:
-
+node_modules
+dist
+.DS_Store
 variables.env

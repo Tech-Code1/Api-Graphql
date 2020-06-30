@@ -1,21 +1,20 @@
-export {};
-const { ApolloServer } = require("apollo-server");
-const typeDefs = require("./../db/schema");
-const resolvers = require("./../db/resolvers");
-
-const conectarDB = require("../config/db");
+import { ApolloServer } from 'apollo-server'
+import 'reflect-metadata'
+import { typeDefs } from './interfaces/schema'
+import { resolvers } from '../src/db/resolvers'
+import { conectarDB } from '../src/config/db'
 
 //Conectar a la base de datos
-conectarDB();
+conectarDB()
 
 //servidor
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-});
+  resolvers
+})
 
 //arrancar el servidor
 
-server.listen().then(({ url }: { url: any }) => {
-  console.log(`servidor listo en la URL ${url}`);
-});
+server.listen().then(({ url }) => {
+  console.log(`servidor listo en la URL ${url}`)
+})
