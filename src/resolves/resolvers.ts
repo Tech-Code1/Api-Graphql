@@ -1,3 +1,6 @@
+//Interfaces
+/* import { iCreateUserInput } from '../../interfaces' */
+
 //Resolvers
 
 export const resolvers = {
@@ -6,7 +9,7 @@ export const resolvers = {
   },
 
   Mutation: {
-    newUser: async (_: any, { input }: { input: string }) => {
+    newUser: (_: object, { input }: { input: object }) => {
       console.log(input)
       return 'Creando...'
     }

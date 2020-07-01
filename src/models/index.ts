@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server'
 import 'reflect-metadata'
-import { typeDefs } from './interfaces/schema'
-import { resolvers } from '../src/db/resolvers'
-import { conectarDB } from '../src/config/db'
+import { typeDefs } from '../graphql/Resolvers/types/schema'
+import { resolvers } from '../resolves/resolvers'
+import { conectarDB } from '../config/db'
 
 //Conectar a la base de datos
 conectarDB()

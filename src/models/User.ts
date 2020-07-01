@@ -25,7 +25,7 @@ const UsersSchema = new mongoose.Schema(
       select: true
     },
     dateOfBirth: {
-      type: Date,
+      type: String,
       required: true,
       trim: true,
       lowercase: true
