@@ -16,7 +16,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    getUser: [User!]
+    getUser: String
   }
 
   type Mutation {
@@ -24,12 +24,12 @@ export const typeDefs = gql`
   }
 
   input UserInput {
-    firstName: String
-    lastName: String
-    email: String
-    password: String
-    dateOfBirth: String
-    genre: String
-    chooseYourRole: String
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    dateOfBirth: String!
+    genre: String!
+    chooseYourRole: String!
   }
 `

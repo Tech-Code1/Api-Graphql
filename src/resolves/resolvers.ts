@@ -9,7 +9,7 @@ export const resolvers = {
   },
 
   Mutation: {
-    newUser: (_: object, { input }: { input: object }) => {
+    newUser: (_: any, { input }: { input: any }) => {
       console.log(input)
       return 'Creando...'
     }
