@@ -20,7 +20,15 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    newUser(input: UserInput): String
+    newUser(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+      dateOfBirth: String!
+      genre: String!
+      chooseYourRole: String!
+    ): User!
   }
 
   input UserInput {
@@ -33,3 +41,4 @@ export const typeDefs = gql`
     chooseYourRole: String!
   }
 `
+module.exports.User

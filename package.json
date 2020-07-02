@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/express-handlebars": "^3.1.0",
+    "@types/mongodb": "^3.5.25",
     "apollo-server": "^2.15.1",
+    "apollo-server-express": "^2.15.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
     "fogg-utils": "^2.3.3",
     "graphql": "^15.2.0",
     "graphql-import-node": "0.0.4",
@@ -15,7 +19,7 @@
     "grapht": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas-ts": "^1.1.4",
-    "mongoose": "^5.9.20",
+    "mongoose": "^5.9.21",
     "npm-check-updates": "^7.0.1",
     "reflect-metadata": "^0.1.13",
     "type": "^2.0.0",
@@ -35,19 +39,21 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.2",
+    "eslint-plugin-react": "^7.20.3",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
-    "ts-node-dev": "^1.0.0-pre.49",
+    "ts-node-dev": "^1.0.0-pre.50",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.6"
   },
   "scripts": {
     "dev": "nodemon src/models/index.ts --exec ts-node",
     "start": "ts-node dist/index.js",
     "build": "tsc -p .",
-    "lint": "eslint . --ext .js,.tsx,.ts"
+    "lint": "eslint . --ext .js,.tsx,.ts",
+    "clear": "rm -rf build",
+    "ts-node": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
