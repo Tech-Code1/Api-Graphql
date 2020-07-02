@@ -9,25 +9,24 @@ const userSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-      required: true,
-      trim: true
+      trim: true,
+      required: true
     },
     email: {
       type: String,
-      required: true,
       trim: true,
-      unique: true
+      required: true
     },
     password: {
       type: String,
-      required: true,
-      select: true
+      select: true,
+      required: true
     },
     dateOfBirth: {
       type: String,
-      required: true,
       trim: true,
-      lowercase: true
+      lowercase: true,
+      required: true
     },
     genre: {
       type: String,

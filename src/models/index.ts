@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server-express'
 import 'reflect-metadata'
-import { typeDefs } from '../graphql/Resolvers/types/schema'
+import { typeDefs } from '../interfaces/schema'
 import { resolvers } from '../resolves/resolvers'
 import { conectarDB } from '../config/db'
 import express from 'express'

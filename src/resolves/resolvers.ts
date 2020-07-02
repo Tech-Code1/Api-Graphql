@@ -1,6 +1,7 @@
-import mongoose from 'mongoose'
-const User = require('../models/User')
+/* import mongoose from 'mongoose'*/
+import User from '../models/User'
 import bcrypt from 'bcryptjs'
+import { Iinput } from '../interfaces/index'
 //Resolvers
 
 export const resolvers = {
@@ -9,7 +10,7 @@ export const resolvers = {
   },
 
   Mutation: {
-    newUser: async (_: any, { input }: { input: any }) => {
+    newUser: async (_: any, { input }: Iinput) => {
       const { email, password } = input
 
       // Revisar si el usuario ya esta registrado
