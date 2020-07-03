@@ -30,13 +30,11 @@ const userSchema = new mongoose.Schema(
     },
     genre: {
       type: String,
-      required: true,
-      enum: ['Hombre', 'Mujer']
+      required: true
     },
     chooseYourRole: {
       type: String,
-      required: true,
-      enum: ['Profesor', 'Estudiante']
+      required: true
     }
   },
   {
