@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 require('dotenv').config({ path: 'variables.env' })
 
-export const conectarDB = async () => {
+const conectDB = async () => {
   try {
     await mongoose.connect(process.env.DB_MONGO, {
       useNewUrlParser: true,
@@ -16,3 +16,5 @@ export const conectarDB = async () => {
     process.exit(1) // detener la app
   }
 }
+
+export default conectDB

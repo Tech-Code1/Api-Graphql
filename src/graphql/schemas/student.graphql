@@ -1,0 +1,51 @@
+###############Querys###############
+
+"Obtener los datos según su rol"
+type Query {
+  getStudent(id: ID!): Student
+}
+
+###############Mutations###############
+
+"Crear nuevo Estudiante"
+type Mutation {
+  studentRegister(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    dateOfBirth: String!
+    genre: Genre!
+    rol: Rol!
+  ): Student
+}
+
+###############Types###############
+
+"Información necesaria para regitrarse en la plataforma"
+type Student {
+  "Campos registrados del usuario en la base de datos"
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: Genre!
+  rol: Rol!
+  createdAt: String!
+  updatedAt: String!
+}
+
+###############InputUser###############
+
+"Input resgistro Estudiante"
+input StudentInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: String!
+  chooseYourRole: String!
+}

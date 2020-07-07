@@ -1,0 +1,31 @@
+###############Querys-Users###############
+
+"Hacer consultas de usuarios"
+type Query {
+  UsersByRol(rol: Rol!): Users
+  usersById(id: ID!): Users
+  usersByName(firstName: String!): Users
+}
+
+"Información para consultar Usuarios"
+type Users {
+  "Campos registrados del usuario en la base de datos"
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: Genre!
+  rol: Rol!
+  createdAt: String!
+  updatedAt: String!
+}
+enum Rol {
+  PROFESOR
+  ESTUDIANTE
+}
+enum Genre {
+  HOMBRE
+  MUJER
+}
