@@ -1,0 +1,38 @@
+###############InputUser###############
+
+"Input resgistro Usuarioe"
+input StudentInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: String!
+  chooseYourRole: String!
+}
+
+###############InputTeacher###############
+
+"Input resgistro Profesor"
+input TeacherInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: String!
+  chooseYourRole: String!
+}
+
+###############InputEstudiante###############
+
+"Input resgistro Estudiante"
+input TeacherInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  dateOfBirth: String!
+  genre: String!
+  chooseYourRole: String!
+}

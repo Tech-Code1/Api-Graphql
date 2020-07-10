@@ -1,0 +1,44 @@
+###############MutationStudent###############
+
+"Crear nuevo Estudiante"
+type Mutation {
+  studentRegister(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    dateOfBirth: String!
+    genre: Genre!
+    rol: Rol!
+  ): Student
+}
+
+###############MutationsTeacher###############
+
+"Crear nuevo Usuario con el rol Profesor"
+type Mutation {
+  teacherRegister(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    dateOfBirth: String!
+    genre: Genre!
+    rol: Rol!
+  ): Teacher
+}
+
+###############MutationUser###############
+
+"Crear nuevo Usuario"
+type Mutation {
+  userRegister(
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    dateOfBirth: String!
+    genre: Genre!
+    rol: Rol!
+  ): Users
+}

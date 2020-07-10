@@ -1,7 +1,7 @@
 import conectDB from './config/db'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
-import { schema } from './graphql/'
+import { schema } from './schemas/graphql'
 import depthLimit from 'graphql-depth-limit'
 
 //Initalize the App(Express)

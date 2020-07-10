@@ -1,0 +1,12 @@
+###############enumsUser###############
+
+"Rol del Usuario"
+enum Rol {
+  PROFESOR
+  ESTUDIANTE
+}
+"Genero del Usuario"
+enum Genre {
+  HOMBRE
+  MUJER
+}
