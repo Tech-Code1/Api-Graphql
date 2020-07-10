@@ -1,7 +1,7 @@
 import conectDB from './config/db'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
-import { schema } from './graphql/index'
+import { schema } from './graphql/'
 import depthLimit from 'graphql-depth-limit'
 
 //Initalize the App(Express)
@@ -13,7 +13,8 @@ const app = express()
 //connect to the data base
 const server = new ApolloServer({
   schema,
-  validationRules: [depthLimit(10)]
+  validationRules: [depthLimit(10)],
+  introspection: true
 })
 
 //Middlewar Graphql
