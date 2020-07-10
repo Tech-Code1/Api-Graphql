@@ -1,11 +1,11 @@
-import mongoose from 'mongoose'
+import { Document } from 'mongoose'
 
-export interface IStudent extends mongoose.Document {
+export interface IStudent extends Document {
   firstName: string
   lastName: string
   email: string
   password: string
   dateOfBirth: string
   genre: string
-  chooseYourRole: string
+  rol: string
 }

@@ -45,7 +45,7 @@ const usersSchema = new mongoose.Schema(
   }
 )
 
-usersSchema.pre<IUser>('save', async function (next) {
+/* usersSchema.pre<IUser>('save', async function (next) {
   const user = this
   if (this.isModified('password')) {
     try {
@@ -56,6 +56,6 @@ usersSchema.pre<IUser>('save', async function (next) {
     }
   }
   next()
-})
+}) */
 
-export default mongoose.model('Users', usersSchema)
+export default mongoose.model<IUser>('Users', usersSchema)

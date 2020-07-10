@@ -46,7 +46,7 @@ const studentSchema = new mongoose.Schema(
   }
 )
 
-studentSchema.pre<IStudent>('save', async function (next) {
+/* studentSchema.pre<IStudent>('save', async function (next) {
   const student = this
   if (this.isModified('password')) {
     try {
@@ -57,6 +57,6 @@ studentSchema.pre<IStudent>('save', async function (next) {
     }
   }
   next()
-})
+})*/
 
-export default mongoose.model('Student', studentSchema)
+export default mongoose.model<IStudent>('Student', studentSchema)
