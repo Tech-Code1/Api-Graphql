@@ -1,30 +1,10 @@
+import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import { IResolvers } from 'graphql-tools'
-import { Student, Teacher, Users } from './../models'
+import { Student, Teacher, Users } from '../../models'
 import { UserInputError } from 'apollo-server-express'
-import { IUser } from '../interfaces/IUser'
-
-export const studentQuery: IResolvers = {
-  //Query Student
-  Query: {
-    getStudent: (root: any, args: any, context: any, info: any) => {
-      // ToDo: auth, projection, pagination, sanitization
-
-      return Student.find({})
-    }
-  }
-}
-
-export const teacherQuery: IResolvers = {
-  //Query Teacher
-  Query: {
-    getTeacher: (root: any, args: any, context: any, info: any) => {
-      // ToDo: auth, projection, pagination, sanitization
-
-      return Teacher.find({})
-    }
-  }
-}
+import { IUser, IToken } from '../../interfaces/IUser'
+require('dotenv').config({ path: 'variables.env' })
 
 export const usersQuery: IResolvers = {
   //Query User By Rol
@@ -56,5 +36,13 @@ export const usersQuery: IResolvers = {
 
       return Users.findById(id)
     }
+
+    ////////////////////////////////////////////
+    //getUser
+    /* getUser: async (root: any, { token }: IToken, context: any, info: any) => {
+      const userId = await jwt.verify(token, process.env.SECRET)
+
+      return userId
+    } */
   }
 }

@@ -10,6 +10,7 @@
     "@types/body-parser": "^1.19.0",
     "@types/compression": "^1.7.0",
     "@types/graphql": "^14.5.0",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.30",
     "apollo-server": "^2.15.1",
     "apollo-server-express": "^2.15.1",
@@ -25,6 +26,7 @@
     "graphql-merge-resolvers": "^1.1.16",
     "graphql-server-express": "^1.4.1",
     "graphql-tools": "^6.0.12",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
     "ncp": "^2.0.0"

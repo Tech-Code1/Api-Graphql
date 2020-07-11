@@ -1,7 +1,7 @@
 ###############InputUser###############
 
-"Input resgistro Usuarioe"
-input StudentInput {
+"Input resgistro Usuario"
+input UserInput {
   firstName: String!
   lastName: String!
   email: String!
@@ -27,7 +27,7 @@ input TeacherInput {
 ###############InputEstudiante###############
 
 "Input resgistro Estudiante"
-input TeacherInput {
+input StudentInput {
   firstName: String!
   lastName: String!
   email: String!
@@ -35,4 +35,12 @@ input TeacherInput {
   dateOfBirth: String!
   genre: String!
   chooseYourRole: String!
+}
+
+###############InputTokens###############
+
+"Input para autenticar Usuarios mediante el correo y la contraseña"
+input AuthInput {
+  email: String!
+  password: String!
 }

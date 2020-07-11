@@ -1,13 +1,10 @@
+import query from './query'
+import mutation from './mutation'
 import { IResolvers } from 'graphql-tools'
-import { usersQuery, teacherQuery, studentQuery } from './query'
-import { studentMutation, teacherMutation } from './mutation'
 
-const resolversMap: IResolvers = {
-  ...usersQuery,
-  ...teacherQuery,
-  ...studentQuery,
-  ...studentMutation,
-  ...teacherMutation
+const resolvers: IResolvers = {
+  ...query,
+  ...mutation
 }
 
-export default resolversMap
+export default resolvers

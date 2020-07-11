@@ -19,4 +19,5 @@ type Query {
   UsersByRol(rol: Rol!): Users
   usersById(id: ID!): Users
   usersByName(firstName: String!): Users
+  getUser(token: String!): Users
 }

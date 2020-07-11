@@ -1,14 +1,6 @@
 "Información para consultar Usuarios"
 type Users {
-  "Campos registrados del usuario en la base de datos"
-  id: ID!
-  firstName: String!
-  lastName: String!
-  email: String!
-  password: String!
-  dateOfBirth: String!
-  genre: Genre!
-  rol: Rol!
-  createdAt: String!
-  updatedAt: String!
+  "Usuarios registrados según su rol"
+  rolStudent: [Student]
+  rolTeacher: [Teacher]
 }
