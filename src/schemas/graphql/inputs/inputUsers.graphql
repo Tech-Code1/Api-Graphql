@@ -8,7 +8,7 @@ input UserInput {
   password: String!
   dateOfBirth: String!
   genre: String!
-  chooseYourRole: String!
+  rol: String!
 }
 
 ###############InputTeacher###############
@@ -21,7 +21,7 @@ input TeacherInput {
   password: String!
   dateOfBirth: String!
   genre: String!
-  chooseYourRole: String!
+  rol: String!
 }
 
 ###############InputEstudiante###############
@@ -34,7 +34,7 @@ input StudentInput {
   password: String!
   dateOfBirth: String!
   genre: String!
-  chooseYourRole: String!
+  rol: String!
 }
 
 ###############InputTokens###############

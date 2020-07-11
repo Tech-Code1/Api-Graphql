@@ -1,8 +1,12 @@
 import GMR from 'graphql-merge-resolvers'
-import mStudent from './'
-import mTeacher from './'
-import mUser from './'
+import { registerTeacherMutation } from './mTeacher'
+import { registerStudentMutation } from './mStudent'
+import { tokenUserMutation } from './mUser'
 
-const resolversMutation = GMR.merge([mStudent, mTeacher, mUser])
+const resolversMutation = GMR.merge([
+  registerTeacherMutation,
+  registerStudentMutation,
+  tokenUserMutation
+])
 
 export default resolversMutation

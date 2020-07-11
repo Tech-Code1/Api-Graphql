@@ -31,9 +31,9 @@ export const registerTeacherMutation: IResolvers = {
       try {
         //Save Teacher in the database
         if (input.rol == 'PROFESOR') {
-          const teacher = new Teacher(input)
-          teacher.save()
-          return teacher
+          const Profesor = new Teacher(input)
+          Profesor.save()
+          return Profesor
         }
       } catch (error) {
         console.log(error)
