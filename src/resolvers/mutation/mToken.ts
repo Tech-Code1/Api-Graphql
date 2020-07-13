@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { IResolvers } from 'graphql-tools'
 import { User } from '../../models'
 import jwt from 'jsonwebtoken'
-import { IUser } from '../../interfaces/IUser'
+import { IUser, IToken } from '../../interfaces/IUser'
 require('dotenv').config({ path: 'variables.env' })
 
 const createToken = (user: IUser, SECRET: any, expiresIn: any) => {
@@ -24,6 +24,19 @@ const createToken = (user: IUser, SECRET: any, expiresIn: any) => {
 }
 
 export const tokenUserMutation: IResolvers = {
+  //get user by token
+  Query: {
+    getUser: async (
+      root: any,
+      { token }: { token: string },
+      context: any,
+      info: any
+    ) => {
+      const userId = await jwt.verify(token, process.env.Secret || 'test token')
+
+      return userId
+    }
+  },
   //Validation
   Mutation: {
     authenticateUser: async (
@@ -47,7 +60,7 @@ export const tokenUserMutation: IResolvers = {
       }
       //create the token
       return {
-        token: createToken(UserExist, process.env.SECRET, '24')
+        token: createToken(UserExist, process.env.SECRET, '24h')
       }
     }
   }
