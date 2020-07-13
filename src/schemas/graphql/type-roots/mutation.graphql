@@ -2,11 +2,8 @@
 
 "Crear nuevo Usuario"
 type Mutation {
-  studentRegister(input: StudentInput): Student
-  "Crear nuevo Usuario con el rol Profesor"
-  teacherRegister(input: TeacherInput): Teacher
   "Crear nuevo Usuario"
-  userRegister(input: UserInput): Users
+  userRegister(input: UserInput): User
   "Autenticar Usuario"
   authenticateUser(input: AuthInput): Token
 }

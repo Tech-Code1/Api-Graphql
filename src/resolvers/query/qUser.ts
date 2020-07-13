@@ -1,9 +1,8 @@
-import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose'
 import { IResolvers } from 'graphql-tools'
-import { Student, Teacher, Users } from '../../models'
+import { User } from '../../models'
 import { UserInputError } from 'apollo-server-express'
-import { IUser, IToken } from '../../interfaces/IUser'
+import { IUser } from '../../interfaces/IUser'
 require('dotenv').config({ path: 'variables.env' })
 
 export const usersQuery: IResolvers = {
@@ -12,19 +11,23 @@ export const usersQuery: IResolvers = {
     UsersByRol: (root: any, { rol }: any, context: any, info: any) => {
       // ToDo: auth, projection, pagination, sanitization
 
-      return Users.find({ rol })
+      return User.find({ rol })
     },
+
+    ////////////////////////////////////////////
 
     //Query User By Name
     usersByName: (
       root: any,
-      { firstName, lastName }: any,
+      { firstName, lastName }: IUser,
       context: any,
       info: any
     ) => {
       // ToDo: auth, projection, pagination, sanitization
-      return Users.find({ firstName, lastName })
+      return User.find({ firstName, lastName })
     },
+
+    ////////////////////////////////////////////
 
     //Query User By Id
     usersById: (root: any, { id }: any, context: any, info: any) => {
@@ -34,15 +37,9 @@ export const usersQuery: IResolvers = {
         throw new UserInputError(`${id} is not a valid user ID.`)
       }
 
-      return Users.findById(id)
+      return User.findById(id)
     }
 
     ////////////////////////////////////////////
-    //getUser
-    /* getUser: async (root: any, { token }: IToken, context: any, info: any) => {
-      const userId = await jwt.verify(token, process.env.SECRET)
-
-      return userId
-    } */
   }
 }

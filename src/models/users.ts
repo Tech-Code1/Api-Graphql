@@ -1,8 +1,9 @@
+import { schema } from '../schemas/graphql'
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import { IUser } from '../interfaces/IUser'
 
-const usersSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
@@ -58,4 +59,4 @@ const usersSchema = new mongoose.Schema(
   next()
 }) */
 
-export default mongoose.model<IUser>('Users', usersSchema)
+export default mongoose.model<IUser>('Users', userSchema)

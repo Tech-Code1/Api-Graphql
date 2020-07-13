@@ -6,10 +6,11 @@ import { GraphQLSchema } from 'graphql'
 import { makeExecutableSchema } from 'graphql-tools'
 import resolvers from './../../resolvers/resolverMap'
 
-import { mergeTypeDefs } from '@graphql-tools/merge'
-import { loadFilesSync } from '@graphql-tools/load-files'
+import { fileLoader, mergeTypes } from 'merge-graphql-schemas'
 
-const typeDefs = mergeTypeDefs(loadFilesSync(`${__dirname}/**/*.graphql`))
+const typeDefs = mergeTypes(fileLoader(`${__dirname}/**/*.graphql`), {
+  all: true
+})
 
 export const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs,

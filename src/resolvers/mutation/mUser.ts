@@ -1,71 +1,44 @@
 import bcrypt from 'bcrypt'
 import { IResolvers } from 'graphql-tools'
-import { Student, Teacher, Users } from '../../models'
-import jwt from 'jsonwebtoken'
-import { IStudent } from '../../interfaces/IStudent'
-import { ITeacher } from '../../interfaces/ITeacher'
+import { User } from '../../models'
 import { IUser } from '../../interfaces/IUser'
-import { isBuffer } from 'util'
 require('dotenv').config({ path: 'variables.env' })
 
-const createToken = (user: IUser, SECRETWORD: any, expiresIn: any) => {
-  /* console.log(user) */
-  const {
-    id,
-    firstName,
-    lastName,
-    email,
-    password,
-    dateOfBirth,
-    genre,
-    rol
-  } = user
-
-  return jwt.sign({ id, firstName, lastName, email, password }, SECRETWORD, {
-    expiresIn
-  })
-}
-
-export const tokenUserMutation: IResolvers = {
-  //Validation
+export const registerUsertMutation: IResolvers = {
+  //Mutation Student Register
   Mutation: {
-    authenticateUser: async (
+    userRegister: async (
       root: any,
       { input }: { input: IUser },
       context: any,
       info: any
     ) => {
+      //check if the user is already registered
       const { email, password } = input
+      const UserExist = await User.findOne({ email })
 
-      //If the user already exists
-      const StudentExist = await Student.findOne({ email })
-      const TeacherExist = await Teacher.findOne({ email })
-      if (!StudentExist && !TeacherExist) {
-        throw new Error('El usuario no existe')
+      if (UserExist) {
+        throw new Error('Este correo ya esta registrado')
       }
 
-      //Check if the password is correct
+      //Encrypt password
+      const salt = await bcrypt.genSalt(10)
+      input.password = await bcrypt.hash(password, salt)
 
-      const passwordStudentCorrect = await bcrypt.compare(
-        password,
-        StudentExist.password
-      )
-
-      const passwordTeacherCorrect = await bcrypt.compare(
-        password,
-        TeacherExist.password
-      )
-
-      if (!passwordStudentCorrect || passwordTeacherCorrect) {
-        throw new Error('El password es incorrecto')
-      }
-      //create the token
-      return {
-        token: createToken(
-          StudentExist || TeacherExist,
-          process.env.SECRETWORD,
-          '24'
-        )
+      try {
+        //Save Teacher in the database
+        if (input.rol == 'ESTUDIANTE') {
+          const student = new User(input)
+          student.save()
+          return student
+        }
+        if (input.rol == 'PROFESOR') {
+          const teacher = new User(input)
+          teacher.save()
+          return teacher
+        }
+      } catch (error) {
+        console.log(error)
       }
     }
   }

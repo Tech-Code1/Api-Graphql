@@ -8,33 +8,7 @@ input UserInput {
   password: String!
   dateOfBirth: String!
   genre: String!
-  rol: String!
-}
-
-###############InputTeacher###############
-
-"Input resgistro Profesor"
-input TeacherInput {
-  firstName: String!
-  lastName: String!
-  email: String!
-  password: String!
-  dateOfBirth: String!
-  genre: String!
-  rol: String!
-}
-
-###############InputEstudiante###############
-
-"Input resgistro Estudiante"
-input StudentInput {
-  firstName: String!
-  lastName: String!
-  email: String!
-  password: String!
-  dateOfBirth: String!
-  genre: String!
-  rol: String!
+  rol: Rol!
 }
 
 ###############InputTokens###############

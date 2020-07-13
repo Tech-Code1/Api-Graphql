@@ -1,23 +1,9 @@
-###############Querys###############
-
-"Obtener los datos según su rol"
-type Query {
-  getStudent(id: ID!): Student
-}
-
-###############Querys-Teacher###############
-
-"Obtener los datos según su rol"
-type Query {
-  getTeacher(id: ID!): Teacher
-}
-
 ###############Querys-Users###############
 
 "Hacer consultas de usuarios"
 type Query {
-  UsersByRol(rol: Rol!): Users
-  usersById(id: ID!): Users
-  usersByName(firstName: String!): Users
-  getUser(token: String!): Users
+  UsersByRol(rol: Rol!): User
+  usersById(id: ID!): User
+  usersByName(firstName: String!): User
+  getUser(token: String!): User
 }
