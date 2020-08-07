@@ -6,9 +6,6 @@ input UserInput {
   lastName: String!
   email: String!
   password: String!
-  dateOfBirth: String!
-  genre: String!
-  rol: Rol!
 }
 
 ###############InputTokens###############

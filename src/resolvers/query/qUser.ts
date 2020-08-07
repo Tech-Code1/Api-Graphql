@@ -6,16 +6,7 @@ import { IUser } from '../../interfaces/IUser'
 require('dotenv').config({ path: 'variables.env' })
 
 export const usersQuery: IResolvers = {
-  //Query User By Rol
   Query: {
-    UsersByRol: (root: any, { rol }: any, context: any, info: any) => {
-      // ToDo: auth, projection, pagination, sanitization
-
-      return User.find({ rol })
-    },
-
-    ////////////////////////////////////////////
-
     //Query User By Name
     usersByName: (
       root: any,

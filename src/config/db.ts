@@ -1,20 +1,18 @@
-const mongoose = require('mongoose')
-require('dotenv').config({ path: 'variables.env' })
+import mysql from 'mysql'
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'bd_edu'
+})
 
-const conectDB = async () => {
-  try {
-    await mongoose.connect(process.env.DB_MONGO, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true
-    })
-    console.log('DB Conectada')
-  } catch (error) {
-    console.log('Hubo un error')
-    console.log(error)
-    process.exit(1) // detener la app
+connection.connect(function (err) {
+  if (err) {
+    console.error('error connecting: ' + err.stack)
+    return
   }
-}
 
-export default conectDB
+  console.log('connected as id ' + connection.threadId)
+})
+
+export default connection

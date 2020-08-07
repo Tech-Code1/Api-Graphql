@@ -25,20 +25,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       select: true,
       required: true
-    },
-    dateOfBirth: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      required: true
-    },
-    genre: {
-      type: String,
-      required: true
-    },
-    rol: {
-      type: String,
-      required: true
     }
   },
   {

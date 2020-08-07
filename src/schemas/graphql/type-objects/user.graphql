@@ -6,9 +6,6 @@ type User {
   lastName: String!
   email: String!
   password: String!
-  dateOfBirth: String!
-  genre: Genre!
-  rol: Rol!
   createdAt: String!
   updatedAt: String!
 }

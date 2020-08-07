@@ -2,7 +2,6 @@
 
 "Hacer consultas de usuarios"
 type Query {
-  UsersByRol(rol: Rol!): User
   usersById(id: ID!): User
   usersByName(firstName: String!): User
   getUser(token: String!): User

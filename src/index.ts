@@ -1,4 +1,4 @@
-import conectDB from './config/db'
+import connection from './config/db'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import { schema } from './schemas/graphql'
@@ -11,18 +11,19 @@ const app = express()
 /* app.use(bodyParser.json()) */
 
 //connect to the data base
+// Inicializamos el servidor de Apollo
 const server = new ApolloServer({
   schema,
-  validationRules: [depthLimit(10)],
-  introspection: true
+  introspection: true, // Necesario
+  context: async () => {
+    return { connection }
+  }
 })
 
 //Middlewar Graphql
 server.applyMiddleware({ app })
 
 const PORT = 4000
-
-conectDB()
 
 //arracncar el servidor
 app.listen(PORT, () => {
