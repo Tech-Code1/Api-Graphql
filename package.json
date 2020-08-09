@@ -25,6 +25,7 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-import-node": "0.0.4",
     "graphql-merge-resolvers": "^1.1.16",
+    "graphql-sequelize": "^9.4.0",
     "graphql-server-express": "^1.4.1",
     "graphql-tools": "^6.0.16",
     "jsonwebtoken": "^8.5.1",
@@ -32,7 +33,9 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
     "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "ncp": "^2.0.0",
+    "sequelize": "^6.3.4",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {

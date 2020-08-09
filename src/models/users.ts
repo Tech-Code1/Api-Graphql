@@ -1,51 +1,61 @@
-module.exports = (sequelize: any, DataTypes: any) => {
-  const User = sequelize.define('User', {
+import { BuildOptions, Sequelize, DataTypes, Model } from 'sequelize'
+const sequelize = new Sequelize('Mysql::memory', {
+  define: {
+    freezeTableName: true
+  }
+})
+
+class User extends Model {}
+User.init(
+  {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
 
     firstName: {
-      type: DataTypes.STRING,
-      required: true,
-      trim: true,
+      type: DataTypes.STRING(),
       allowNull: false
     },
     lastName: {
       type: DataTypes.STRING,
-      trim: true,
-      required: true,
       allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      trim: true,
-      required: true,
       unique: true,
       allowNull: false
     },
     password: {
       type: DataTypes.STRING,
-      select: true,
-      required: true,
       allowNull: false
     },
     rol: {
       type: DataTypes.STRING,
-      required: true,
       allowNull: false
     },
     createdAt: {
-      type: DataTypes.STRING
+      allowNull: false,
+      type: DataTypes.DATE
     },
     updatedAt: {
-      type: DataTypes.STRING
+      allowNull: false,
+      type: DataTypes.DATE
     }
-  })
-  User.associate = function (models: any) {
-    User.hasMany(models.Post)
+  },
+  {
+    // Other model options go here
+    sequelize, // We need to pass the connection instance
+    modelName: 'User' // We need to choose the model name
   }
-  return User
+)
+
+console.log(User === sequelize.models.User) // true
+
+export type UserModelStatic = typeof Model & {
+  new (values?: Record<string, unknown>, options?: BuildOptions): User
 }
+
+export default User as UserModelStatic

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import { IResolvers } from 'graphql-tools'
-import { User } from '../../models'
+import User from '../../models'
 import { IUser } from '../../interfaces/IUser'
 require('dotenv').config({ path: 'variables.env' })
 

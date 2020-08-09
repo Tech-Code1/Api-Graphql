@@ -3,7 +3,7 @@ import { promisify } from 'util'
 
 const { database } = require('./keys')
 
-const pool = mysql.createPool(database)
+const pool: mysql.Pool = mysql.createPool(database)
 
 pool.getConnection((err: MysqlError, connection: PoolConnection) => {
   if (err) {

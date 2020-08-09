@@ -1,8 +1,7 @@
-import pool from './config/db'
+import { Sequelize } from 'sequelize'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import { schema } from './schemas/graphql'
-import depthLimit from 'graphql-depth-limit'
 
 //Initalize the App(Express)
 const app = express()
@@ -11,13 +10,16 @@ const app = express()
 /* app.use(bodyParser.json()) */
 
 //connect to the data base
+const { database } = require('./keys')
+const sequelize = new Sequelize(database, {
+  host: 'localhost',
+  dialect: 'mysql'
+})
+
 // Inicializamos el servidor de Apollo
 const server = new ApolloServer({
   schema,
-  introspection: true, // Necesario
-  context: async () => {
-    return { pool }
-  }
+  introspection: true // Necesario
 })
 
 //Middlewar Graphql

@@ -1,14 +1,11 @@
-import { Document } from 'mongoose'
+import { Model } from 'sequelize'
 
-export interface IUser extends Document {
+export interface IUser extends Model {
   id: string
   firstName: string
   lastName: string
   email: string
   password: string
-  dateOfBirth: string
-  genre: string
-  rol: string
 }
 
 export interface IToken extends Document {
