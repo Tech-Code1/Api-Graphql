@@ -1,3 +1,4 @@
+"Generación de token para la autenticación"
 type Token {
   token: String
 }

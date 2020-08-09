@@ -1,48 +1,51 @@
-import { schema } from '../schemas/graphql'
-import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
-import { IUser } from '../interfaces/IUser'
+module.exports = (sequelize: any, DataTypes: any) => {
+  const User = sequelize.define('User', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
 
-const userSchema = new mongoose.Schema(
-  {
     firstName: {
-      type: String,
+      type: DataTypes.STRING,
       required: true,
-      trim: true
+      trim: true,
+      allowNull: false
     },
     lastName: {
-      type: String,
-      trim: true,
-      required: true
-    },
-    email: {
-      type: String,
+      type: DataTypes.STRING,
       trim: true,
       required: true,
-      unique: true
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      trim: true,
+      required: true,
+      unique: true,
+      allowNull: false
     },
     password: {
-      type: String,
+      type: DataTypes.STRING,
       select: true,
-      required: true
+      required: true,
+      allowNull: false
+    },
+    rol: {
+      type: DataTypes.STRING,
+      required: true,
+      allowNull: false
+    },
+    createdAt: {
+      type: DataTypes.STRING
+    },
+    updatedAt: {
+      type: DataTypes.STRING
     }
-  },
-  {
-    timestamps: true
+  })
+  User.associate = function (models: any) {
+    User.hasMany(models.Post)
   }
-)
-
-/* usersSchema.pre<IUser>('save', async function (next) {
-  const user = this
-  if (this.isModified('password')) {
-    try {
-      user.password = await bcrypt.hash(user.password, 10)
-      next()
-    } catch (err) {
-      next(err)
-    }
-  }
-  next()
-}) */
-
-export default mongoose.model<IUser>('Users', userSchema)
+  return User
+}

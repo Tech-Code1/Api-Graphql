@@ -2,7 +2,10 @@
 
 "Hacer consultas de usuarios"
 type Query {
+  "Buscar usuario por ID"
   usersById(id: ID!): User
+  "Buscar usuario por su nombre"
   usersByName(firstName: String!): User
+  "Obtener usuario por toquen"
   getUser(token: String!): User
 }

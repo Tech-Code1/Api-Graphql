@@ -32,7 +32,8 @@
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
     "mysql": "^2.18.1",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",

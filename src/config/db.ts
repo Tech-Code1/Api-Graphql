@@ -1,18 +1,29 @@
-import mysql from 'mysql'
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'bd_edu'
-})
+import mysql, { PoolConnection, MysqlError } from 'mysql'
+import { promisify } from 'util'
 
-connection.connect(function (err) {
+const { database } = require('./keys')
+
+const pool = mysql.createPool(database)
+
+pool.getConnection((err: MysqlError, connection: PoolConnection) => {
   if (err) {
-    console.error('error connecting: ' + err.stack)
-    return
+    if (err.code === 'Protocol_connection_lost') {
+      console.error('Database connection was closed')
+    }
+    if (err.code === 'ER_CON_COUNT ERROR') {
+      console.error('Database has to manny intents connections')
+    }
+    if (err.code === 'ECONNREFUSED') {
+      console.error('Database connection was refused')
+    }
   }
 
-  console.log('connected as id ' + connection.threadId)
+  if (connection) connection.release()
+  console.log('DB is connected')
+  return
 })
 
-export default connection
+//Primisify conver promess to callbacks for querys
+/* pool.query = promisify(pool.query) */
+
+export default pool
