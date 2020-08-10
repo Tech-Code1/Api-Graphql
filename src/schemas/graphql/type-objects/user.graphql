@@ -6,7 +6,18 @@ type User {
   lastName: String!
   email: String!
   password: String!
-  rol: Rol!
-  createdAt: String!
-  updatedAt: String!
+  created_At: String!
+  updated_At: String!
+}
+
+"identificador Estudiante"
+type Student {
+  "ID Estudiante"
+  id: ID!
+}
+
+"identificador Profesor"
+type Teacher {
+  "ID Profesor"
+  id: ID!
 }

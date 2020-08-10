@@ -1,7 +1,1 @@
 ###############enumsUser###############
-
-"Rol del Usuario"
-enum Rol {
-  PROFESOR
-  ESTUDIANTE
-

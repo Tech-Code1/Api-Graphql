@@ -1,4 +1,6 @@
+import bcrypt, { hash } from 'bcrypt'
 import { BuildOptions, Sequelize, DataTypes, Model } from 'sequelize'
+import { IUser } from '../interfaces/IUser'
 const sequelize = new Sequelize('Mysql::memory', {
   define: {
     freezeTableName: true
@@ -45,13 +47,36 @@ User.init(
       type: DataTypes.DATE
     }
   },
+
   {
-    // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: 'User' // We need to choose the model name
+    modelName: 'User', // We need to choose the model name
+    freezeTableName: true, // The name same the table
+
+    //Encrypt password
+    hooks: {
+      beforeCreate: (User: IUser) => {
+        const salt = bcrypt.genSaltSync(10)
+        User.password = bcrypt.hashSync(User.password, salt)
+      }
+    }
   }
 )
 
+/* User.beforeCreate((user, options ) => {
+    return bcrypt
+      .hash(user.password, 10)
+      .then(hash => {
+        User.password = hash
+      })
+      .catch(err => {
+        throw new Error()
+      })
+  }) */
+
+/*  const salt = await bcrypt.genSalt(10)
+      input.password = await bcrypt.hash(password, salt)
+ */
 console.log(User === sequelize.models.User) // true
 
 export type UserModelStatic = typeof Model & {

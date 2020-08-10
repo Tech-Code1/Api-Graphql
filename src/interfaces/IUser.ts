@@ -7,6 +7,14 @@ export interface IUser extends Model {
   email: string
   password: string
 }
+export interface IStudent extends Model {
+  id: string
+  rol: string
+}
+export interface ITeacher extends Model {
+  id: string
+  rol: string
+}
 
 export interface IToken extends Document {
   token: string

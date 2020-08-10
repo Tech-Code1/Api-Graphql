@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+import ModelType from '../../models'
 import { IResolvers } from 'graphql-tools'
-import { User } from '../../models'
+import User from '../../models'
 import { UserInputError } from 'apollo-server-express'
 import { IUser } from '../../interfaces/IUser'
 require('dotenv').config({ path: 'variables.env' })
@@ -15,20 +15,7 @@ export const usersQuery: IResolvers = {
       info: any
     ) => {
       // ToDo: auth, projection, pagination, sanitization
-      return User.find({ firstName, lastName })
-    },
-
-    ////////////////////////////////////////////
-
-    //Query User By Id
-    usersById: (root: any, { id }: any, context: any, info: any) => {
-      //ToDo: auth, projection, sanitization
-
-      if (mongoose.Types.ObjectId.isValid(id)) {
-        throw new UserInputError(`${id} is not a valid user ID.`)
-      }
-
-      return User.findById(id)
+      return ModelType.User.findOne({ where: { firstName, lastName } })
     }
 
     ////////////////////////////////////////////

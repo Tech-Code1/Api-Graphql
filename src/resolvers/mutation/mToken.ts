@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import ModelType from '../../models'
 import { IResolvers } from 'graphql-tools'
 import User from '../../models'
 import jwt from 'jsonwebtoken'
@@ -7,16 +8,7 @@ require('dotenv').config({ path: 'variables.env' })
 
 const createToken = (user: IUser, SECRET: any, expiresIn: any) => {
   /* console.log(user) */
-  const {
-    id,
-    firstName,
-    lastName,
-    email,
-    password,
-    dateOfBirth,
-    genre,
-    rol
-  } = user
+  const { id, firstName, lastName, email, password } = user
 
   return jwt.sign({ id, firstName, lastName, email, password }, SECRET, {
     expiresIn
@@ -48,19 +40,19 @@ export const tokenUserMutation: IResolvers = {
       const { email, password } = input
 
       //If the user already exists
-      const UserExist = await User.findOne({ email })
+      const UserExist = await ModelType.User.findOne({ where: { email } })
       if (!UserExist) {
         throw new Error('El usuario no existe')
       }
 
       //Check if the password is correct
-      const passwordCorrect = await bcrypt.compare(password, UserExist.password)
+      const passwordCorrect = await bcrypt.compare(password, input.password)
       if (!passwordCorrect) {
         throw new Error('El password es incorrecto')
       }
       //create the token
       return {
-        token: createToken(UserExist, process.env.SECRET, '24h')
+        token: createToken(input, process.env.SECRET, '24h')
       }
     }
   }
