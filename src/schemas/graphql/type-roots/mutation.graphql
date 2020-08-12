@@ -7,7 +7,6 @@ type Mutation {
   "Autenticar Usuario"
   authenticateUser(input: AuthInput): Token
 }
-
 ###############MutationsTeacher###############
 
 ###############MutationUser###############
