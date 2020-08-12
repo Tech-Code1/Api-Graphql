@@ -6,8 +6,8 @@ type User {
   lastName: String!
   email: String!
   password: String!
-  created_At: String!
-  updated_At: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 "identificador Estudiante"

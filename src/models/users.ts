@@ -34,10 +34,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    rol: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE
